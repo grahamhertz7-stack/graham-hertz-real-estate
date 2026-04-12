@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>101 Utah Avenue | Graham Hertz Real Estate</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .breadcrumb {
+            margin-bottom: 2rem;
+            color: #666;
+        }
+        
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .property-header {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .property-header h1 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+        }
+        
+        .property-header p {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .key-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .detail-box {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 5px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .detail-box strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .media-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .media-section h2 {
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            background: #000;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .gallery-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            overflow: hidden;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .description-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .description-section h2 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .description-section p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .feature {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 5px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .feature h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .contact-section h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-section p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s;
+            margin: 0 0.5rem;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .property-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .key-details {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Graham Hertz Real Estate</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/#properties">Properties</a></li>
+                <li><a href="/#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="/">Home</a> / <a href="/#properties">Properties</a> / 101 Utah Avenue
+        </div>
+        
+        <div class="property-header">
+            <h1>101 Utah Avenue</h1>
+            <p>South San Francisco, CA 94080</p>
+            
+            <div class="key-details">
+                <div class="detail-box">
+                    <strong>Square Footage</strong>
+                    43,188 SF
+                </div>
+                <div class="detail-box">
+                    <strong>Clear Height</strong>
+                    16-17 ft
+                </div>
+                <div class="detail-box">
+                    <strong>Property Type</strong>
+                    Warehouse / Office
+                </div>
+                <div class="detail-box">
+                    <strong>Status</strong>
+                    Available
+                </div>
+            </div>
+        </div>
+        
+        <div class="media-section">
+            <h2>Virtual Tour & Video Presentation</h2>
+            <p style="color: #666; margin-bottom: 1rem;">Watch our professional AI-powered property presentation featuring detailed insights about 101 Utah Avenue.</p>
+            
+            <!-- HeyGen Video Placeholder -->
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen="" allow="autoplay"></iframe>
+            </div>
+            
+            <p style="color: #999; font-size: 0.9rem; text-align: center;">
+                💡 <em>Note: Replace the video URL above with your HeyGen video embed code once generated.</em>
+            </p>
+            
+            <h3 style="color: #667eea; margin-top: 2rem; margin-bottom: 1rem;">Property Gallery</h3>
+            <div class="gallery">
+                <div class="gallery-item">📷 Exterior View</div>
+                <div class="gallery-item">📷 Interior Warehouse</div>
+                <div class="gallery-item">📷 Office Space</div>
+                <div class="gallery-item">📷 Loading Area</div>
+                <div class="gallery-item">📷 Parking Lot</div>
+                <div class="gallery-item">📷 Location Map</div>
+            </div>
+        </div>
+        
+        <div class="description-section">
+            <h2>Property Overview</h2>
+            <p>
+                101 Utah Avenue is a premium warehouse and office facility located in the heart of South San Francisco. 
+                This exceptional property offers modern amenities, excellent accessibility, and strategic positioning 
+                for businesses seeking growth opportunities in the Bay Area.
+            </p>
+            <p>
+                With 43,188 square feet of versatile space and 16-17 feet of clear height, this property is ideal for 
+                distribution, light manufacturing, or office operations. The facility features modern infrastructure, 
+                ample parking, and convenient access to major transportation corridors.
+            </p>
+            
+            <h3 style="color: #667eea; margin-top: 2rem; margin-bottom: 1rem;">Key Features</h3>
+            <div class="features">
+                <div class="feature">
+                    <h3>Modern Infrastructure</h3>
+                    <p>Recently updated systems and utilities to support your business needs.</p>
+                </div>
+                <div class="feature">
+                    <h3>Strategic Location</h3>
+                    <p>Prime location with excellent access to highways and transportation.</p>
+                </div>
+                <div class="feature">
+                    <h3>Flexible Space</h3>
+                    <p>Configurable layout to accommodate various business operations.</p>
+                </div>
+                <div class="feature">
+                    <h3>Ample Parking</h3>
+                    <p>Dedicated parking for employees and client vehicles.</p>
+                </div>
+                <div class="feature">
+                    <h3>Professional Management</h3>
+                    <p>Expert property management and maintenance services.</p>
+                </div>
+                <div class="feature">
+                    <h3>Growth Potential</h3>
+                    <p>Room for expansion and business development opportunities.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="contact-section">
+            <h2>Interested in 101 Utah Avenue?</h2>
+            <p>Let's discuss how this property can support your business goals.</p>
+            <a href="/#contact" class="cta-button">Schedule a Tour</a>
+            <a href="mailto:grahamhertz7@gmail.com?subject=101%20Utah%20Avenue%20Inquiry" class="cta-button">Email Inquiry</a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2026 Graham Hertz Real Estate. All rights reserved.</p>
+        <p>Hosted on GitHub Pages | <a href="https://github.com/grahamhertz7-stack/graham-hertz-real-estate" style="color: #667eea;">View on GitHub</a></p>
+    </footer>
+</body>
+</html>
